@@ -1,0 +1,34 @@
+<div class="grid">
+	<div class="row">
+		<label class="t12">
+			Name
+			<input name="name" type="text" />
+		</label>
+		<label class="t12">
+			Role
+			<input name="role" type="text" />
+		</label>
+		<label class="t12">
+			Photo credit
+			<input name="credit" type="text" />
+		</label>
+		<label class="t6">
+			Phone
+			<input name="phone" type="text" />
+		</label>
+		<label class="t6">
+			Email
+			<input name="email" type="text" />
+		</label>
+		<label class="t12">
+			Description
+			<textarea name="desc" ></textarea>
+		</label>
+		
+		<label class="t6">
+			Profile image
+			<input name="img" type="text" class="picture-input-field" data-image-dir="/img"/>
+		</label>
+
+	</div>
+</div>

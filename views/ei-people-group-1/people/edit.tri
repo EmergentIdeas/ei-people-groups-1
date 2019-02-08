@@ -1,0 +1,18 @@
+
+__::$pretemplate__
+<h1>Edit People Group</h1>
+<form method="post" action="__dreck.editUrl__" class="register bootstrap-form">
+__::./fields__
+<button type="submit">Save</button>
+</form>
+
+<h2>People</h2>
+<div class="people-groups-list-edit">
+	<a href="__dreck.createPeopleUrl__">Create Person</a>
+	<ul class="people" data-sort-url="__dreck.sortPeopleUrl__">
+	__focus.people::./people-tile__
+
+	</ul>
+</div>
+
+__::$posttemplate__
