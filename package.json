@@ -1,6 +1,6 @@
 {
-  "name": "ei-people-groups-1",
-  "version": "1.0.0",
+  "name": "@dankolz/ei-people-groups-1",
+  "version": "1.0.1",
   "description": "people groups webhandle",
   "main": "index.js",
   "scripts": {

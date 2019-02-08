@@ -22,7 +22,7 @@ let integrate = function(dbName) {
 	)
 	webhandle.routers.primary.use('/peoplegroups', securedpeoplegroupsRouter)
 	
-	webhandle.addTemplateDir(path.join(webhandle.projectRoot, 'node_modules/ei-people-groups-1/views'))
+	webhandle.addTemplateDir(path.join(webhandle.projectRoot, 'node_modules/@dankolz/ei-people-groups-1/views'))
 	
 	webhandle.pageServer.preRun.push((req, res, next) => {
 		let pageName = req.path.split('/').pop()
