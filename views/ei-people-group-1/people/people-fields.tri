@@ -26,6 +26,10 @@
 		</label>
 		
 		<label class="t6">
+			Website
+			<input name="website" type="text" />
+		</label>
+		<label class="t6">
 			Profile image
 			<input name="img" type="text" class="picture-input-field" data-image-dir="/img"/>
 		</label>
