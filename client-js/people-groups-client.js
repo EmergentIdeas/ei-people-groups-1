@@ -22,6 +22,6 @@ if($slides.length > 0) {
 
 var UploadableImage = require('ei-pic-browser/uploadable-image')
 
-$('input[type=text].picture-input-field').each(function() {
+$('.person-edit-form input[type=text].picture-input-field').each(function() {
         new UploadableImage(this)
 })

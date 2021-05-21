@@ -1,7 +1,7 @@
 
 __::$pretemplate__
 <h1>Edit Person</h1>
-<form method="post" action="__dreck.editUrl__/person/__focus.id__/edit" class="register bootstrap-form">
+<form method="post" action="__dreck.editUrl__/person/__focus.id__/edit" class="register bootstrap-form person-edit-form">
 	__::./people-fields__
 <button type="submit">Save</button>
 </form>
