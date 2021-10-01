@@ -1,37 +1,41 @@
 <div class="grid">
 	<div class="row">
-		<label class="t12">
+		<label class="t12" class="name-label">
 			Name
 			<input name="name" type="text" />
 		</label>
-		<label class="t12">
+		<label class="t12" class="role-label">
 			Role
 			<input name="role" type="text" />
 		</label>
-		<label class="t12">
+		<label class="t12" class="photo-label">
 			Photo credit
 			<input name="credit" type="text" />
 		</label>
-		<label class="t6">
+		<label class="t6" class="phone-label">
 			Phone
 			<input name="phone" type="text" />
 		</label>
-		<label class="t6">
+		<label class="t6" class="email-label">
 			Email
 			<input name="email" type="text" />
 		</label>
-		<label class="t12">
+		<label class="t12" class="description-label">
 			Description
 			<textarea name="desc" ></textarea>
 		</label>
 		
-		<label class="t6">
+		<label class="t6" class="website-label">
 			Website
 			<input name="website" type="text" />
 		</label>
-		<label class="t6">
+		<label class="t6" class="profile-image-label">
 			Profile image
 			<input name="img" type="text" class="picture-input-field" data-image-dir="/img"/>
+		</label>
+		<label class="t12" class="details-label">
+			Details
+			<textarea name="details" class="ckeditor" ></textarea>
 		</label>
 
 	</div>
