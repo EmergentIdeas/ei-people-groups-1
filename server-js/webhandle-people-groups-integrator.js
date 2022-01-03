@@ -25,7 +25,13 @@ let integrate = function(dbName) {
 	webhandle.addTemplateDir(path.join(webhandle.projectRoot, 'node_modules/@dankolz/ei-people-groups-1/views'))
 	
 	webhandle.pageServer.preRun.push((req, res, next) => {
-		let pageName = req.path.split('/').pop()
+		let pageName 
+		let parts = req.path.split('/')
+		do {
+			pageName = parts.pop()
+			
+		} while(!pageName && parts.length > 0);
+
 		if(!pageName) {
 			pageName = 'index'
 		}
