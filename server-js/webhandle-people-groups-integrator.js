@@ -35,15 +35,57 @@ let integrate = function(dbName) {
 		if(!pageName) {
 			pageName = 'index'
 		}
-		webhandle.dbs[dbName].collections.peoplegroups.findOne({name: pageName}, (err, result) => {
-			if(err) {
-				log.error(err)
+		
+		if(res.locals.page.peopleGroups) {
+			let groupsTotal = 0
+			let groupsLoaded = 0
+			if(res.locals.page.peopleGroups.loadPageNameGroup) {
+				groupsTotal++
+				webhandle.dbs[dbName].collections.peoplegroups.findOne({name: pageName}, (err, result) => {
+					if(err) {
+						log.error(err)
+					}
+					else if(result){
+						res.locals.page.people = result.people
+					}
+					groupsLoaded++
+					if(groupsTotal == groupsLoaded) {
+						next()
+					}
+				})
 			}
-			else if(result){
-				res.locals.page.people = result.people
+			if(res.locals.page.peopleGroups.loadNames) {
+				let names = res.locals.page.peopleGroups.loadNames
+				if(typeof names == 'string') {
+					let names = [names]
+				}
+				for(let name of names) {
+					groupsTotal++
+					webhandle.dbs[dbName].collections.peoplegroups.findOne({name: name}, (err, result) => {
+						if(err) {
+							log.error(err)
+						}
+						else if(result){
+							if(!res.locals.peopleGroups) {
+								res.locals.peopleGroups = {}
+							}
+							res.locals.peopleGroups[name] = result
+						}
+						groupsLoaded++
+						if(groupsTotal == groupsLoaded) {
+							next()
+						}
+					})
+				}
 			}
-			next()
-		})
+			if(groupsTotal == groupsLoaded) {
+				next()
+			}
+
+		}
+		else {
+			return next()
+		}
 	})
 	
 }
