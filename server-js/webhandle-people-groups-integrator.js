@@ -6,23 +6,39 @@ const express = require('express');
 
 const PeopleGroupsDreck = require('./people-groups-dreck')
 
-let integrate = function(dbName) {
+let integrate = function(dbName, options) {
+	let opt = Object.assign({
+		collectionName: 'peoplegroups',
+		templateDir: 'node_modules/@dankolz/ei-people-groups-1/views',
+		mountPoint: '/peoplegroups',
+		allowedGroups: ['administrators'],
+		dreckOptions: {}
+	}, options || {})
+
 	if(!webhandle.dbs[dbName].collections.peoplegroups) {
-		webhandle.dbs[dbName].collections.peoplegroups = webhandle.dbs[dbName].db.collection('peoplegroups')
+		webhandle.dbs[dbName].collections.peoplegroups = webhandle.dbs[dbName].db.collection(opt.collectionName)
 	}
 	
-	let peoplegroups = new PeopleGroupsDreck({
-		mongoCollection: webhandle.dbs[dbName].collections.peoplegroups,
-	})
+
+	if(!opt.dreckOptions.mongoCollection) {
+		opt.dreckOptions.mongoCollection = webhandle.dbs[dbName].collections.peoplegroups
+	}
+	let peoplegroups = new PeopleGroupsDreck(opt.dreckOptions)
 	
 	let peoplegroupsRouter = peoplegroups.addToRouter(express.Router())
 	let securedpeoplegroupsRouter = require('webhandle-users/utils/allow-group')(
 		['administrators'],
 		peoplegroupsRouter
 	)
-	webhandle.routers.primary.use('/peoplegroups', securedpeoplegroupsRouter)
+	webhandle.routers.primary.use(opt.mountPoint, securedpeoplegroupsRouter)
+	if(!webhandle.drecks) {
+		webhandle.drecks = {}
+	}
+	webhandle.drecks['peoplegroups'] = peoplegroups
 	
-	webhandle.addTemplateDir(path.join(webhandle.projectRoot, 'node_modules/@dankolz/ei-people-groups-1/views'))
+	if(opt.templateDir) {
+		webhandle.addTemplateDir(path.join(webhandle.projectRoot, opt.templateDir))
+	}
 	
 	webhandle.pageServer.preRun.push((req, res, next) => {
 		let pageName 
