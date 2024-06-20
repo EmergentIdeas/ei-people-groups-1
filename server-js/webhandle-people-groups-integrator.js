@@ -73,7 +73,7 @@ let integrate = function(dbName, options) {
 			if(res.locals.page.peopleGroups.loadNames) {
 				let names = res.locals.page.peopleGroups.loadNames
 				if(typeof names == 'string') {
-					let names = [names]
+					names = [names]
 				}
 				for(let name of names) {
 					groupsTotal++
