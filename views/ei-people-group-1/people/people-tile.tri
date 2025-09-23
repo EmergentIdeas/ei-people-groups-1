@@ -6,7 +6,7 @@
 				<form method="post" action="__$globals.dreck.editUrl__/person/__id__/delete">
 					<button class="delete" onclick="return confirm('Are you sure you want to delete?')">&times;</button>
 				</form>
-				<a class="move" href="#">&#8597;</a>
+				<span class="move" >&#8597;</span>
 				
 				
 			</div>

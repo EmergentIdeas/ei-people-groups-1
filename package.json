@@ -1,6 +1,6 @@
 {
   "name": "@dankolz/ei-people-groups-1",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "people groups webhandle",
   "main": "index.js",
   "scripts": {
@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/EmergentIdeas/ei-people-groups-1#readme",
   "dependencies": {
+    "@webhandle/drag-sortable-list": "^1.0.2",
     "commingle": "0.0.4",
     "dreck": "^1.0.8",
-    "ei-pic-browser": "^1.0.5",
     "express": "^4.16.3",
+    "install": "^0.13.0",
+    "npm": "^11.6.0",
     "sortablejs": "^1.7.0",
     "uuid": "^3.4.0",
     "webhandle": "^1.0.19",
